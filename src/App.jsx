@@ -4,6 +4,7 @@ import ForgetPassword from "./components/ForgetPassword";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import ResetPassword from "./components/ResetPassword";
+import Dashboard from "./components/Dashboard";
 
 const routes = [
   {
@@ -23,8 +24,12 @@ const routes = [
     element: <ForgetPassword />,
   },
   {
-    path: "/reset-password",
+    path: "/reset-password/:token",
     element: <ResetPassword />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ];
 

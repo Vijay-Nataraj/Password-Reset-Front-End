@@ -5,27 +5,33 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 const ResetPassword = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const { token } = useParams(); // Assumes token is passed as a URL parameter
+  const [message, setMessage] = useState(""); // Added message state to show error messages
+  const { token } = useParams();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(password, confirmPassword);
     if (password !== confirmPassword) {
       setMessage("Passwords do not match");
       return;
     }
     try {
-      const response = await axios.post(`/api/reset-password/${token}`, {
-        password,
-      });
-      setMessage(response.data.message);
+      const response = await axios.post(
+        `http://localhost:3000/api/v1/reset-password/${token}`,
+        {
+          password,
+        }
+      );
 
-      alert("Password successfully reset");
-
-      navigate("/login");
+      if (response.status === 200) {
+        console.log("Password successfully reset");
+        alert("Password successfully reset");
+        navigate("/login");
+      }
     } catch (error) {
-      setMessage(error.response.data.message);
+      console.log(error);
+      setMessage("An error occurred while resetting the password");
     }
   };
 
@@ -57,6 +63,7 @@ const ResetPassword = () => {
             />
           </div>
           <br />
+          {message && <p className="text-danger">{message}</p>}
           <div className="text-center">
             <button type="submit" className="btn btn-primary h-100 w-100">
               Reset Password
@@ -67,7 +74,6 @@ const ResetPassword = () => {
           </div>
         </form>
       </div>
-      {message && <p>{message}</p>}
     </div>
   );
 };

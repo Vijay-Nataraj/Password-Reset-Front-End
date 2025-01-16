@@ -11,13 +11,23 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post("/api/login", { email, password });
-      setMessage(response.data.message);
-      navigate("/");
-    } catch (error) {
-      setMessage(error.response.data.message);
-    }
+    setMessage("");
+
+    await axios
+      .post("http://localhost:3000/api/v1/login", { email, password })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log("Login successful");
+          alert("Login successful");
+          navigate(`/dashboard`);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setMessage("Invalid credentials");
+        alert("Invalid credentials");
+        navigate(`/login`);
+      });
   };
 
   return (
@@ -73,7 +83,6 @@ const Login = () => {
           </div>
         </form>
       </div>
-      {message && <p>{message}</p>}
     </div>
   );
 };
