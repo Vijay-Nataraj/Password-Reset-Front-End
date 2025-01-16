@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import ForgetPassword from "./components/ForgetPassword";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import ResetPassword from "./components/ResetPassword";
 
 const routes = [
   {
@@ -20,6 +21,10 @@ const routes = [
   {
     path: "/forgot-password",
     element: <ForgetPassword />,
+  },
+  {
+    path: "/reset-password",
+    element: <ResetPassword />,
   },
 ];
 
