@@ -18,7 +18,7 @@ const ResetPassword = () => {
     }
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/v1/reset-password/${token}`,
+        `https://password-reset-back-end-elif.onrender.com/api/v1/reset-password/${token}`,
         {
           password,
         }

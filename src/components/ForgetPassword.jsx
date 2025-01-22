@@ -10,7 +10,10 @@ const ForgotPassword = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3000/api/v1/forgot-password", { email })
+      .post(
+        `https://password-reset-back-end-elif.onrender.com/api/v1/forgot-password`,
+        { email }
+      )
       .then((res) => {
         console.log(res.status);
         if (res.status === 200) {

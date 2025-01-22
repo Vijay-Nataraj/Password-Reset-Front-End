@@ -13,7 +13,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/register",
+        `https://password-reset-back-end-elif.onrender.com/api/v1/register`,
         {
           email,
           password,

@@ -14,7 +14,10 @@ const Login = () => {
     setMessage("");
 
     await axios
-      .post("http://localhost:3000/api/v1/login", { email, password })
+      .post(`https://password-reset-back-end-elif.onrender.com/api/v1/login`, {
+        email,
+        password,
+      })
       .then((res) => {
         if (res.status === 200) {
           console.log("Login successful");
