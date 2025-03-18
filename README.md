@@ -26,9 +26,9 @@ This is a simple React application that includes registration, login, and forgot
 1. **Clone the repository**:
 
    ```bash
-    git clone https://github.com/Vijay-Nataraj/Password-Reset-Front-End.git
+    git clone
 
-    cd Password-Reset-Front-End
+    cd frontend
    ```
 
 2. **Install dependencies**:
